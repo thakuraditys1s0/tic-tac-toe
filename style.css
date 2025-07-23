@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Canvas for particles */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #3E1E68, #6A2C91);
+  background-size: cover;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 380px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 1s ease-out;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #FFE6E6;
+}
+
+.turn-indicator {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #FFD6A5;
+}
+
+.board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+  border-radius: 15px;
+  font-size: 2.5rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.5s;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #FFB199, #FF0844);
+}
+
+.cell.x {
+  color: #3333ff; /* Warm orange-red */
+}
+
+.cell.o {
+  color: #14A76C; /* Calm teal-green */
+}
+
+.winner-message {
+  margin-top: 5px;
+  font-size: 1.4rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+}
+
+.winner-message.show {
+  opacity: 1;
+  transform: scale(1);
+  color: #FFF9C4; /* Warm pale yellow */
+}
+
+.restart-btn, .mode-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #FF7E5F, #FEB47B);
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.restart-btn:hover, .mode-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #43C6AC, #191654);
+}
+
+.scoreboard {
+  margin-top: 15px;
+  font-size: 1rem;
+  text-align: center;
+  color: #FFF;
+}
+
+.scoreboard div {
+  margin: 4px 0;
+}
+
+/* Winning Line */
+.winning-line {
+  position: absolute;
+  height: 6px;
+  background: linear-gradient(90deg, #FFD700, #FF8C00);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  border-radius: 4px;
+  transform-origin: left center;
+  animation: drawLine 0.5s ease forwards;
+}
+
+@keyframes drawLine {
+  0% { width: 0; opacity: 0; }
+  100% { opacity: 1; width: 100%; }
+}
+
+@media (max-width: 400px) {
+  .board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+  }
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+}

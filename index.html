@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe Deluxe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <div class="game-container">
+    <h1>Tic Tac Toe Deluxe</h1>
+    <div class="turn-indicator" id="turnIndicator">Turn: X</div>
+    <div class="board" id="board"></div>
+    <div class="winner-message" id="winnerMessage"></div>
+    <div class="scoreboard">
+      <div id="xScore">X Wins: 0</div>
+      <div id="oScore">O Wins: 0</div>
+      <div id="drawScore">Draws: 0</div>
+    </div>
+    <button class="restart-btn" id="restartBtn">New Game</button>
+    <button class="mode-btn" id="modeBtn">Mode: Player vs Player</button>
+  </div>
+
+  <audio id="moveSound" src="https://assets.mixkit.co/sfx/preview/mixkit-soft-game-click-2317.mp3"></audio>
+  <audio id="winSound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
+  <audio id="drawSound" src="https://assets.mixkit.co/sfx/preview/mixkit-game-show-wrong-answer-buzz-950.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
